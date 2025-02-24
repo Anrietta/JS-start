@@ -546,3 +546,134 @@
 // Щоб перевірити чи значення NaN треба використовувати функцію Number.isNaN(NaN)
 // Є глобальна функція isNaN() - перевіряє чи будь які значення є чи не є NaN
 // є функція Number.isNaN() - перевіряє чи число є чи не є NaN
+
+
+// ####################################################################################################
+
+                // Цикли while, do...while (Loops)
+
+
+//while - цикл з передумовою, спершу перевіряємо умову потім виконуємо тіло цикла
+
+// while (умова) {
+//         тіло циклу
+// }
+
+// let sideCount = 1;  // змінна яка буде збільшуватись, лічильник
+// const TOTAL_SIDE_AMOUNT = 4;  // константа в якій загальна кількість сторін (ітерацій)
+
+// while (sideCount <= TOTAL_SIDE_AMOUNT) {  // умова, коли sideCount буде = 4, після цього цикл закінчиться (кількість ітерацій в цьому циклі = 4)
+//         console.log('Пройти прямо');
+//         console.log('Повернути наліво');
+//         sideCount++; // sideCount += 1; sideCount = sideCount + 1;  // після виконання тіла циклу збільшити sideCount на 1
+// }
+
+
+//Задачка
+// У користувача є книга з TOTAL_PAGE_AMOUNT сторінок
+// Вивести номери сторінок від 1 до останньої
+
+// let pageCount = 1;
+// const TOTAL_PAGE_AMOUNT = 15;
+
+// while (pageCount <= TOTAL_PAGE_AMOUNT) {
+//         console.log('Page number : ' + pageCount);
+//         pageCount++;
+// }
+
+
+// Задачка
+// Вивести тільки парні сторінки
+
+// let pageCount = 1;
+// const TOTAL_PAGE_AMOUNT = 15;
+
+// while (pageCount <= TOTAL_PAGE_AMOUNT) {
+//         if (pageCount % 2 === 0) {
+//                 console.log('Page number : ' + pageCount);
+//         }
+//         pageCount++;
+// }
+
+// Задачка
+// Вивести числол і вивести його квадрат
+// Перевірити, щоб число було скінченним (не NaN, Infinity)
+
+// 1 - ввести число
+// 2- якщо воно скінченне, тоді вивсети його квадрат
+// 3 - якщо не підходить то перейти на перший пункт
+
+// let n = Number(prompt('Enter number :'));
+
+// while (!Number.isFinite(n)) {       // .isFinite - це функція Number, яка перевіряє чи число скінченне, тобто не дорівнює NaN чи Infinity
+//         n = Number(prompt('Enter number :'))
+// }
+// console.log(n, n * n);
+
+
+
+//do ... while - спочатку відпрацьовує цикл, а потім перевіряється умова (цикл з  постумовою)
+
+// do {
+//         тіло циклу
+// } while (умова)
+
+// let n = null;
+
+// do {
+//         n = Number(prompt('Enter number :'))
+// } while (!Number.isFinite(n));
+
+// console.log(n, n*n);
+
+
+// Задачка
+//Вивсети кількість торінок через do...while
+
+// let currentPage = 0;
+// const TOTTAL_PAGE_AMOUNT = 10;
+
+// do {
+//         currentPage++;
+//         console.log(currentPage);
+// } while (currentPage < TOTTAL_PAGE_AMOUNT);
+
+
+//Задачка
+//Порахувати суму чисел від 1 до 20
+
+// let i = 1;
+// let sum = 0;  // змінна акумулятор, тому що вона акмулює значення
+
+// while (i <= 20) {
+//         sum = sum + i;
+//         i++;
+// }
+// console.log(sum);
+
+// 1 - i = 1
+// 2 -  i=1 <=20 - true
+// sum = 0 + 1 = 1
+        // i = i + 1 = 1 + 1 = 2
+// 3 - i=2 <=20 - true 
+// sum = 1 + 2 = 3
+        // i = i + 1 = 2 + 1 = 3
+//...
+// 4 - i=20 <= 20 - true
+// sum = 190 + 20 = 210
+        // i = i + 1 = 20 + 1 = 21
+// 5 - i=21 <= 20 - false
+// 6 - виходимо з циклу
+
+
+//Задачка
+//Порахувати добуток чисел від 1 до 10
+
+// let i = 1;
+// let sum = 1;
+
+// while (i <= 10) {
+//         sum = sum * i;
+//         i++;
+// }
+// console.log(sum);
