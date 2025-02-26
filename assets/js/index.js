@@ -798,3 +798,76 @@
 //===================
 // break; - завершити цикл
 // continue; - завершити поточну ітерацію і  перейти до наступної, при цьому з циклу ми не виходимо
+
+
+
+// ################################################################################################################
+
+                // Template literal
+
+// Шаблонний літерал - спосіб формування рядка таким чином, щоб всередині рядка можна було використати якісь вирази
+
+// const summand1 = 4;
+// const summand2 = 5;
+// Довгий варіант писати через конкатинацію щоб отримати вираз 4 + 5 = 9
+        // console.log(String(summand1) + '+' + String(summand2) + '+' + '=' + String(summand1 + summand2)); 
+
+// Шаблонний літерал - це короткий варіант написати те що вгорі. Позначається через бектики
+        // console.log(`${summand1} + ${summand2} = ${summand1 + summand2}`);
+
+
+
+//Задачка
+// const greeting = 'Hello';
+// const userName = prompt('Enter your name: ');
+
+// console.log(`${greeting}, ${userName}!`);  // 'Hello, Name!' by template literal
+
+
+//Задачка
+//Користувач має три спроби ввести парроль
+// Якщо пароль вірний, то вивести "Пароль вірний"
+//Інакше "Пароль невірний"
+
+
+// 1 варіант рішення роздутий класичний
+
+// const TRY_LIMIT = 3;
+// const PASSWORD_PATTERN = 'qwerty';
+
+// let currentTry = 1;
+// let password = '';
+
+// do {
+//         password = prompt('Input password: ');
+//         if (password === PASSWORD_PATTERN) {
+//                 break;
+//         }
+//         currentTry++;
+// } while (currentTry <= TRY_LIMIT);
+
+// if (password === PASSWORD_PATTERN) {
+//         console.log('Password is correct!');
+// } else {
+//         console.log('Pasword is incorrect!');
+// }
+
+
+// 1 варіант рішення оптимізований короткий і красівий
+
+// const TRY_LIMIT = 3;
+// const PASSWORD_PATTERN = 'qwerty';
+
+// let currentTry = 1;
+// let isPasswordCorrect = false;
+
+// do {
+//         isPasswordCorrect = prompt('Input password: ') === PASSWORD_PATTERN;
+
+// } while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
+
+// if (isPasswordCorrect) {
+//         console.log('Password is correct!');
+// } else {
+//         console.log('Pasword is incorrect!');
+// }
