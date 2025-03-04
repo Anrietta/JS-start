@@ -798,3 +798,162 @@
 //===================
 // break; - завершити цикл
 // continue; - завершити поточну ітерацію і  перейти до наступної, при цьому з циклу ми не виходимо
+
+
+
+// ################################################################################################################
+
+                // Шаблонні літерали (Template literals)
+
+// Шаблонний літерал - спосіб формування рядка таким чином, щоб всередині рядка можна було використати якісь вирази
+
+// const summand1 = 4;
+// const summand2 = 5;
+// Довгий варіант писати через конкатинацію щоб отримати вираз 4 + 5 = 9
+        // console.log(String(summand1) + '+' + String(summand2) + '+' + '=' + String(summand1 + summand2)); 
+
+// Шаблонний літерал - це короткий варіант написати те що вгорі. Позначається через бектики
+        // console.log(`${summand1} + ${summand2} = ${summand1 + summand2}`);
+
+
+
+//Задачка
+// const greeting = 'Hello';
+// const userName = prompt('Enter your name: ');
+
+// console.log(`${greeting}, ${userName}!`);  // 'Hello, Name!' by template literal
+
+
+//Задачка
+//Користувач має три спроби ввести парроль
+// Якщо пароль вірний, то вивести "Пароль вірний"
+//Інакше "Пароль невірний"
+
+
+// 1 варіант рішення роздутий класичний
+
+// const TRY_LIMIT = 3;
+// const PASSWORD_PATTERN = 'qwerty';
+
+// let currentTry = 1;
+// let password = '';
+
+// do {
+//         password = prompt('Input password: ');
+//         if (password === PASSWORD_PATTERN) {
+//                 break;
+//         }
+//         currentTry++;
+// } while (currentTry <= TRY_LIMIT);
+
+// if (password === PASSWORD_PATTERN) {
+//         console.log('Password is correct!');
+// } else {
+//         console.log('Pasword is incorrect!');
+// }
+
+
+// 2 варіант рішення оптимізований короткий і красівий (ще коротший в розділі тернарний оператор)
+
+// const TRY_LIMIT = 3;
+// const PASSWORD_PATTERN = 'qwerty';
+
+// let currentTry = 1;
+// let isPasswordCorrect = false;
+
+// do {
+//         isPasswordCorrect = prompt('Input password: ') === PASSWORD_PATTERN;
+
+// } while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
+
+// if (isPasswordCorrect) {
+//         console.log('Password is correct!');
+// } else {
+//         console.log('Pasword is incorrect!');
+// }
+
+
+// ########################################################################################################################
+
+
+                // Тернарний оператор ?: (Ternary Operator)
+
+// a++ = один операнд (унарний операнд)
+// a+b = два операнди (бінарний операнд)
+// a*b^2 = три операнди (тернарний операнд)
+
+
+// тернарний оператор можна вкористовувати для умовних розгалужень замість if - else
+
+// let result = умова ? значення1 : знначення2
+// Спочатку обчислуюється умова: якщо вона правдива, тоді повертається значення1, інакше - значення2
+
+// true ? 5 : 10 //  повернеться 5 бо воно правдиве
+// true ? 5 : 10 // повернеться 10 бо 5 правдиве а ми просим знайти фолс, 10 теж правдиве, але тут ми просим повернути фолс значення в першій умові, оскільки воно не фолс, то повертається значення другої умови
+
+
+//Задачка
+
+//Якщо людина повнолітня, вивести "Ви повнолітній", інакше вивести "Ви не повнолітній"
+
+//коротке рішення за допомогою тернарного оператора
+// const age = 18;
+
+// const resultString = age >= 18 ? "Ви повнолітній" : "Ви не повнолітній";
+// console.log(resultString);
+
+
+// класичне рішення через if-else
+
+// const age = 18;
+// let result = '';
+
+// if (age >= 18) {
+//         result = "Ви повнолітній";
+// } else {
+//         result = "Ви не повнолітній";
+// }
+// console.log(result);
+
+
+
+//Задачка
+//Користувач має три спроби ввести парроль
+// Якщо пароль вірний, то вивести "Пароль вірний"
+//Інакше "Пароль невірний"
+
+
+// 1 класичний варіант рішення
+
+// const TRY_LIMIT = 3;
+// const PASSWORD_PATTERN = 'qwerty';
+
+// let currentTry = 1;
+// let isPasswordCorrect = false;
+
+// do {
+//         isPasswordCorrect = prompt('Input password: ') === PASSWORD_PATTERN;
+
+// } while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
+
+// if (isPasswordCorrect) {
+//         console.log('Password is correct!');
+// } else {
+//         console.log('Pasword is incorrect!');
+// }
+
+
+// короткий варіант через тернарний оператор замість if-else + з шаблонним літералом
+
+// const TRY_LIMIT = 3;
+// const PASSWORD_PATTERN = 'qwerty';
+
+// let currentTry = 1;
+// let isPasswordCorrect = false;
+
+// do {
+//         isPasswordCorrect = prompt('Input password: ') === PASSWORD_PATTERN;
+
+// } while (++currentTry <= TRY_LIMIT && !isPasswordCorrect);
+
+// console.log(`Password is ${isPasswordCorrect ? 'correct' : 'incorrect'}`);
