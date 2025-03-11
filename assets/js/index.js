@@ -1304,14 +1304,14 @@
 
 
 //Властивості мають тип даних -  string та symbol()
-const user = {
-           // key: value
-        firstName: 'Test',
-        lastName: 'Testobych',
-        age: 25,
-        password: 'qwerty'
-};
-console.log(user);
+// const user = {
+//            // key: value
+//         firstName: 'Test',
+//         lastName: 'Testobych',
+//         age: 25,
+//         password: 'qwerty'
+// };
+// console.log(user);
 
 // Отримати доступ до властивостей обєкта звертаємось до обєкта і через . до властивості
 
@@ -1344,20 +1344,20 @@ console.log(user);
 //додати властивість ПІБ власника
 //Переглянути об'єкт
 
-const car = {
-        carBrand : 'Mazda',
-        carModel : 'CX 30 Electro',
-        year: 2020,
-        number: 'AO1234AI',
-        color: 'white'
-}
+// const car = {
+//         carBrand : 'Mazda',
+//         carModel : 'CX 30 Electro',
+//         year: 2020,
+//         number: 'AO1234AI',
+//         color: 'white'
+// }
 
-console.log(car);
+// console.log(car);
 
-car.color = 'red';
-delete car.year;
-car.owner = 'Vasya Petrov';
-console.log(car);
+// car.color = 'red';
+// delete car.year;
+// car.owner = 'Vasya Petrov';
+// console.log(car);
 
 
 
@@ -1406,12 +1406,188 @@ console.log(car);
 // Задача
 // Зробити копії для об'єкту car
 
-const car2 = Object.assign({}, car);
-car2.color = 'black';
-console.log(car2);
-console.log(car === car2);
+// const car2 = Object.assign({}, car);
+// car2.color = 'black';
+// console.log(car2);
+// console.log(car === car2);
 
-const car3 = {...car2};
-car3.color = 'silver';
-console.log(car3);
-console.log(car2 === car3 === car);
+// const car3 = {...car2};
+// car3.color = 'silver';
+// console.log(car3);
+// console.log(car2 === car3 === car);
+
+
+// ------------------------------------------------------------------------------------------------------
+
+                // Методи об'єкту
+
+
+// В прикладі нижче ми хочемо отримати Ім'я та Прізвище (разом) юзера в стрінгі
+
+// Якщо нам потрібно з обєкту отримати якісь значення для наступної операції, то можна через функцію витягнути кожну окрему властивість
+//Але такий спосіб є недуже правильним відповідно до обєктно-орієнтованого програмування, тому що згідноо ООП ми повинні сприймати обєкт як цілісну конструкцію а не розбирати його на запчастини
+// const user = {
+//         firstName: 'Test',
+//         lastName: 'Testovych',
+//         age: 25,
+//         password: 'qwerty'
+// };
+// console.log(user);
+
+// function getFullName(firstName, lastName) {
+//         return `${firstName} ${lastName}`;
+// }
+
+// const fullName = getFullName(user.firstName, user.lastName);
+// console.log(fullName);
+
+
+// тому доречніше буде сам обєкт навчити робити те що ми від нього хочемо (в середині нього створити функцію яка буде повертати ім'я та прізвище користувача)
+
+
+// const user = {
+//         firstName: 'Test',
+//         lastName: 'Testovych',
+//         age: 25,
+//         password: 'qwerty',
+//         // метод (функція) - що повртає повне ім'я та прізвище
+//         // Скорочена форма:
+//         getFullName(){
+//                 return `${this.firstName} ${this.lastName}` 
+//         },
+//         // метод (функція) - що дозволяє змінити пароль
+//         changePassword(newPassword){
+//                 this.password = newPassword;
+//         }
+
+        // метод (функція) - що повртає повне ім'я та прізвище
+        // Розширена форма:
+        // getFullName: function () {
+        //         // this - це контекст, він = user (посилання на обєкт, для яйого викликано метод)
+        //         return `${this.firstName} ${this.lastName}`   // насправді так не пишуть, пізніше розберем чому
+        // },
+        // метод (функція) - що дозволяє змінити пароль
+        // changePassword: function (newPassword) {
+        //         this.password = newPassword;
+        // }
+
+// };
+// console.log(user);
+
+// const userFullName = user.getFullName();
+// console.log(userFullName);
+
+// user.changePassword('123456');
+// console.log(user);
+
+
+
+//Функції в JS це обєкти першого класу, тобто ми можемо з функції повертати функцію, змінним присвоювати функції, в обєкти засовувати функції, тощо
+//Функція в середині обєкту називається методом
+
+
+//Задача. Написати функцію по зміні кольороу авто для обєкту car
+
+// const car = {
+//         carBrand : 'Mazda',
+//         carModel : 'CX 30 Electro',
+//         year: 2020,
+//         number: 'AO1234AI',
+//         color: 'white',
+//         changeColor(newColor) {
+//                 this.color = newColor;
+//         }
+// }
+
+// car.changeColor('green');
+// console.log(car);
+
+
+// -----------------------------------------------------------------------------------------------------------------
+
+                // Перебір об'єкту
+
+// Для того щоб перебрати об'єкти є метод for...in
+
+// for (key in object)  - де key це ключове слово-змінна (тобто перебери властивості в цьому обєкті), ми його так і залишаєм, а object пишем назву об'єкту який перебираєм
+
+// const user = {
+//         firstName: 'Test',
+//         lastName: 'Testovych',
+//         age: 25,
+//         password: 'qwerty',
+//         getFullName(){
+//                return `${this.firstName} ${this.lastName}` 
+//         },
+//         changePassword(newPassword){
+//                 this.password = newPassword;
+//         }
+// };
+// console.log(user);
+
+// for (const key in user) {
+//         // console.log(user[key]);   // дістатись до самого значення властивості
+//         // console.log(key, user[key]); // отримуєм і назву властивості і дістаємось до самого значення властивості
+
+// }
+
+// Як звернутись до значення властивості яка знаходиться в момент ітерації в змінній key
+//Через синтаксис обчислювальних властивостей : [];
+
+// const property = 'firstName';
+// console.log(user[property]);
+
+// const userProp = prompt('Enter property:');
+// console.log(user[userProp]);
+
+
+//Задачка
+//Перебрати car за допомогою for...in
+//Результат вивести у вигляді car.властивість = значення
+
+
+// const car = {
+//         carBrand : 'Mazda',
+//         carModel : 'CX 30 Electro',
+//         year: 2020,
+//         number: 'AO1234AI',
+//         color: 'white',
+//         changeColor(newColor) {
+//                 this.color = newColor;
+//         }
+// }
+
+// for (const key in car) {
+//         console.log(`car.${key} = ${car[key]}`); 
+// }
+
+
+//Перегляд обєкту в консолі:
+
+// console.log(car);   // виводить обєкт у рядковому форматі з можливістю розгорнути вміст
+// console.dir(car);   // виводить обєкт з можливістю розгорнути вміст (dir - спеціально для виводу обєктів)
+// console.dir(function f(){});  // виведе в консоль функцію як обєкт (вони мають всі ті самі параметри що і звичайний обєкт)
+
+//Тобто функція це теж обєкти. Це обєкти першого класу!
+
+
+
+// ---------------------------------------------------------------------------------------------------
+
+
+                //Вкладені об'єкти
+
+// В середину обєктів можуть бути вкладені як будь які примітивні типи даних (число, стрінг, булевий...), так і функції, так і обєкти
+
+// const human = {
+//         name: 'Ivo',
+//         phisicalParams: {
+//                 height: 1.8,
+//                 weight: 75,
+//         }
+// };
+
+// console.log(human);
+
+// Щоб дістатись до властивостей вкладеного обєкта то звертаємось по вкладенням по черзі через .
+// console.log(human.phisicalParams.height);
