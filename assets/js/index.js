@@ -1455,31 +1455,31 @@
 // const user1 = User ('Anna', 'Tovt', 6, 'qwerty');
 
 //Назву функцію пишем з UpperCaleCase і викликається з оператором new
-function User (firstName, lastName, age, password) {
-        //змінна this = {} - сама створюється і працює під капотом завдяки оператору new
-        this.name = firstName;
-        this.surname = lastName;
-        this.age = age;
-        this.password = password;
-        //можна додавати у функцію конструктор і інші методи(функції), наприклад щоб збільшити вік юзера коли в нього день народження (для цього звісно потрібно знати дату народженння, але для прикладу зробим функцію не знаючи дати)
-        //Задачка, перенести метод makeOlder в прототип
-        // this.makeOlder = function () {
-        //         this.age++;
-        // }
-        // return сам відпрацьовує під капотом завдяки оператору new
-}
-//Передаючи параметри в  функцію-конструктор для створення обєкта не забуваємо про оператор new
-const userA = new User ('Anna', 'Tovt', 6, 'qwerty');
-console.dir(userA);
+// function User (firstName, lastName, age, password) {
+//         //змінна this = {} - сама створюється і працює під капотом завдяки оператору new
+//         this.name = firstName;
+//         this.surname = lastName;
+//         this.age = age;
+//         this.password = password;
+//         //можна додавати у функцію конструктор і інші методи(функції), наприклад щоб збільшити вік юзера коли в нього день народження (для цього звісно потрібно знати дату народженння, але для прикладу зробим функцію не знаючи дати)
+//         //Задачка, перенести метод makeOlder в прототип
+//         // this.makeOlder = function () {
+//         //         this.age++;
+//         // }
+//         // return сам відпрацьовує під капотом завдяки оператору new
+// }
+// //Передаючи параметри в  функцію-конструктор для створення обєкта не забуваємо про оператор new
+// const userA = new User ('Anna', 'Tovt', 6, 'qwerty');
+// console.dir(userA);
 
-const userB = new User ('Yurii', 'Tovt', 37, 'Qwerty');
-console.dir(userB);
+// const userB = new User ('Yurii', 'Tovt', 37, 'Qwerty');
+// console.dir(userB);
 
 
 //тут наче викликаємо функцію для збільшення віку у функції-конструкторі 
 // userA.makeOlder();
-console.log(userA);  // отримуєм на 1 рік більше ніж було
-console.log(userB); // а тут вік лишився той самий
+// console.log(userA);  // отримуєм на 1 рік більше ніж було
+// console.log(userB); // а тут вік лишився той самий
 
 
 // Тепер для ми створили конструктор, який для кожного користувача створює екземпляр обєкту з персоналізованими даними.
@@ -1492,24 +1492,24 @@ console.log(userB); // а тут вік лишився той самий
 // Прототип це метод який дозволяє перевикористувати якісь спільні методи із загального батьківського обєкту 
 
 //Задати обєкт
-const userProto = {};    // можна ще задати так: const user = new User(); 
-// Прописати в ньому метод
-userProto.changePassword = function(newPassword) {
-        this.password = newPassword;
-};
-// userProto.makeOlder = function () {
-//         this.age++;
+// const userProto = {};    // можна ще задати так: const user = new User(); 
+// // Прописати в ньому метод
+// userProto.changePassword = function(newPassword) {
+//         this.password = newPassword;
 // };
-// Призначити створений обєктв  властивість prototype у функції-конструктора
-User.prototype = userProto;
+// // userProto.makeOlder = function () {
+// //         this.age++;
+// // };
+// // Призначити створений обєктв  властивість prototype у функції-конструктора
+// User.prototype = userProto;
 
-//Можна ще метод прописувати прямо в User.prototype  ось так:
-// User.prototype.makeOlder= function () { 
-//         this.age++; 
-// };
+// //Можна ще метод прописувати прямо в User.prototype  ось так:
+// // User.prototype.makeOlder= function () { 
+// //         this.age++; 
+// // };
 
-console.log(userA.makeOlder === userB.makeOlder); // false - тому що зберігається в властивостях кожного юзера, і оскільки обєкт є посилальним типом то вважається що метод makeOlder різний в кожного користувача
-console.log(userA.changePassword === userB.changePassword);  // true - тому що привязаний через прототип, так само досупний для кожного обєкта юзера, але не дублюється як властивість в кожному обєкті і вважається однаковою бо створена з одного місця
+// console.log(userA.makeOlder === userB.makeOlder); // false - тому що зберігається в властивостях кожного юзера, і оскільки обєкт є посилальним типом то вважається що метод makeOlder різний в кожного користувача
+// console.log(userA.changePassword === userB.changePassword);  // true - тому що привязаний через прототип, так само досупний для кожного обєкта юзера, але не дублюється як властивість в кожному обєкті і вважається однаковою бо створена з одного місця
 
 
 // Згадуємо що всі типи даних мають свої методи
@@ -1542,10 +1542,10 @@ console.log(userA.changePassword === userB.changePassword);  // true - тому 
 // Успадкування: instanceof також може перевірити, чи успадковує об'єкт від певного класу.
 // Обробка помилок: Ви можете використовувати instanceof для перевірки, чи є помилка екземпляром певного типу помилки.
 
-console.log(userA instanceof User);  // перевіряємо чи обєкт userA насправді є ексземпляром функції-конструктора User (тобто чи був userA створений за допомогою User)
+// console.log(userA instanceof User);  // перевіряємо чи обєкт userA насправді є ексземпляром функції-конструктора User (тобто чи був userA створений за допомогою User)
 
-if (userA instanceof User) {
-        console.log('userA is User');
-} else {
-        console.log('userA is not User');
-}
+// if (userA instanceof User) {
+//         console.log('userA is User');
+// } else {
+//         console.log('userA is not User');
+// }
