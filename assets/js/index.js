@@ -1561,4 +1561,274 @@
 // Задача: Написати програму, яка перевіряє число на те, чи ділиться воно на 2, 3 або 5
 
 
-const number = Number(prompt('Enter a number: '));
+// const number = Number(prompt('Enter a number: '));
+
+// if(number % 5 === 0) {
+//         console.log(number + ' is divisible by 5');
+// }
+// if(number % 3 === 0) {
+//         console.log(number + ' is divisible by 3');
+// }
+// if(number % 2 === 0) {
+//         console.log(number + ' is divisible by 2');
+// }
+
+// Результат виведення буде кожен з if який ділиться націло, тобто число 10 буде ділитись на 5 і на 2 і в консоль виведуться два записи
+// А якщо нам потрібно вивести лише один дільник для 10 ?
+// Ми можемо почерзі перевірити через else if співпадіння
+
+
+// if(number % 5 === 0) {
+//         console.log(number + ' is divisible by 5');
+// } else if(number % 3 === 0) {
+//         console.log(number + ' is divisible by 3');
+// } else if(number % 2 === 0) {
+//         console.log(number + ' is divisible by 2');
+// } else {
+//         console.log(number + "isn't divisible by 5, 3 or 2");
+// };
+
+// Через else if ми отримаємо лише перший правдивий результат, тобто в нашому прикладі в консоль виведеться що 10націло ділиться на 5
+
+// Тепер уявімо що у нас буде 100 рядків коду з умовами, його убде важко читати
+// для того щоб не роздувати else if до нечитабельнтх розмірів існує конструкція switch
+// switch - інструкція, яка порівнює вирази з випаадками, які перечислені всередині неї, а потім виконує відповідні інструкції 
+// switch - це спосіб реалізації вибору з декількох можливих варіантів в залежності від значення виразу
+
+// Основна відмінність між if та switch полягає в способі перевірки умов.
+//  Конструкція if перевіряє одну або декілька умов за допомогою логічних виразів
+// Інструкція switch перевіряє одну змінну на різні можливі значення
+// Конструкція switch використовується у випадках, коли перевіряється одна змінна на різні значення
+
+// Синтаксис
+
+/*
+switch (вираз - якась змінна) {
+        case значення _виразу: робимо щось одне;
+        case значення2_виразу: робимо щось інше;
+        case значення3_виразу: робимо ще щось іншне;
+        default: робимо щоь якщо інші значення не підійшли
+}
+
+*/
+
+
+// Задача: нам приходить номер місяця, за номером місяця потрібно визначити пору року
+
+// const monthNumber = 3;
+
+// switch(monthNumber) {
+//         case 1: {
+//                 console.log('winter');
+//                 break;    // ключове слово break використувується для припинення виконання блоку switch і виходу із нього як тільки виконується case
+//         }
+//         case 2: {
+//                 console.log('winter');
+//                 break;
+//         }
+//         case 3: {
+//                 console.log('spring');
+//                 break;
+//         }
+//         case 4: {
+//                 console.log('spring');
+//                 break;
+//         }
+//         case 5: {
+//                 console.log('spring');
+//                 break;
+//         }
+//         case 6: {
+//                 console.log('summer');
+//                 break;
+//         }
+//         case 7: {
+//                 console.log('summer');
+//                 break;
+//         }
+//         case 8: {
+//                 console.log('summer');
+//                 break;
+//         }
+//         case 9: {
+//                 console.log('autumn');
+//                 break;
+//         }
+//         case 10: {
+//                 console.log('autumn');
+//                 break;
+//         }
+//         case 11: {
+//                 console.log('autumn');
+//                 break;
+//         }
+//         case 12: {
+//                 console.log('winter');
+//                 break;
+//         }
+//         default: {                    // дефолтне значення потрібно для того щоб обробити значення змінної якщо воно не співпало з жодним кейсом (тобто значення не передбачені кейсами)
+//                 console.log('Enter a number from 1 to 12');
+//                 break;  // в defolt можрна нен ставити break тому що це останній рядок контструкції, і він логічно сам завершить виконання і вийде з конструкції
+//         }
+// }
+
+// ключове слово break використувується для припинення виконання блоку switch і виходу із нього як тільки виконується case
+//інакше навіть знайшовши співпадіння на початку switch воно добіжить з того кейса де відбулось співпадіння аж до кінця контструкції і виведе вс консоль всі кейси в т.ч. дефолт від кейсу співпадіння до дефолту
+// щоб цього не відбувалось потрібно в кожному кейсі проставити ключове слово break
+
+// Якщо повернутись до попередньої задачі з діленням на 5,3,2  і уявімо що ми хочемо отримати всі можливі дільники і вивести по ним всім інфо в консоль, тоді можна не ставити break, break поставим лише перед дефолтом в передостанньому кейсі щоб дефолт не враховувався
+
+
+// В конструкції swicth ми можему групувати значення case.
+// групування дає змогу виконувати код для кількох варіантів значення
+// у задачі з місяцями є ситуації коли для декількох місяців потрібно вивести одну й ту ж пору року
+
+
+// const monthNumber = 12;
+
+// switch(monthNumber) {
+//         case 1:
+//         case 2: 
+//         case 12: {
+//                 console.log('winter');
+//                 break;    // ключове слово break використувується для припинення виконання блоку switch і виходу із нього як тільки виконується case
+//         }
+//         case 3:
+//         case 4:
+//         case 5: {
+//                 console.log('spring');
+//                 break;
+//         }
+//         case 6:
+//         case 7:
+//         case 8: {
+//                 console.log('summer');
+//                 break;
+//         }
+//         case 9:
+//         case 10:
+//         case 11: {
+//                 console.log('autumn');
+//                 break;
+//         }
+//         default: {                    // дефолтне значення потрібно для того щоб обробити значення змінної якщо воно не співпало з жодним кейсом (тобто значення не передбачені кейсами)
+//                 console.log('Enter a number from 1 to 12');
+//                 break;  // в defolt можрна нен ставити break тому що це останній рядок контструкції, і він логічно сам завершить виконання і вийде з конструкції
+//         }
+// }
+
+
+
+
+//Задача 1
+/* Prompt
+Виведіть користувачу пропозицію меню
+1 - Сік
+2 - Вода
+3 - Кава
+4 - Чай
+5 - Лимонад
+
+В залежності який номер ввів користувач вивести в консоль напій "Сік", чи "Вода"...
+Зробити через switch-case
+*/
+
+
+// const menu = Number(prompt('Choose a dring entering the necessary number : \n 1. Juice \n 2. Water \n 3. Coffee \n 4. Tea \n 5. Lemonade'));
+
+// switch(menu) {
+//         case 1: {
+//                 console.log('Your juice is almost ready!');
+//                 break;
+//         }
+//         case 2: {
+//                 console.log('Your water is almost ready!');
+//                 break
+//         }
+//         case 3: {
+//                 console.log('Your coffee is almost ready!');
+//                 break;
+//         }
+//         case 4: {
+//                 console.log('Your tea is almost ready!');
+//                 break;
+//         }
+//         case 5: {
+//                 console.log('Your lemonade is almost ready!');
+//                 break;
+//         }
+//         default: {
+//                 console.log('Ooops! It seems like you entered incorrect value. Please try again.');
+//                 break;
+//         }
+// }
+
+
+
+// Задача 2
+/*
+Зробити калькулятор
+
+Користувач послідовно один за одним вводить :
+- Перше число
+- Друге число
+- Один з варіантів: +, -, * , /
+
+Для кожної математичної дії можна зробити окрему функцію
+Весь калькулятор це теж окрема функція роль якої спитати у користувача два числа і дію і повернути йому рпезультат обчислення через alert
+
+P.S. Повна творча свбода
+Якщо ви бачите рішення цієї задачі якось інакше ви можете реалізувати своє бачення калькулятора
+
+*/
+
+
+
+// const firstNum = Number(prompt('Enter the first number:')),
+//       secondNum = Number(prompt('Enter the second number:')),
+//       operator = prompt('Enter the necessary operator (+, -, *, /):');
+
+// const calc = function() {
+
+//         function addition(firstNum, secondNum) {
+//                 let sum = firstNum + secondNum;
+//                 return alert(`The value of expression ${firstNum} + ${secondNum} equals ${sum}!`);
+//         };
+//         function subtraction(firstNum, secondNum) {
+//                 let sum = firstNum - secondNum;
+//                 return alert(`The value of expression ${firstNum} - ${secondNum} equals ${sum}!`);
+//         };
+//         function multiplication(firstNum, secondNum) {
+//                 let sum = firstNum * secondNum;
+//                 return alert(`The value of expression ${firstNum} * ${secondNum} equals ${sum}!`);
+//         };
+//         function division (firstNum, secondNum) {
+//                 let sum = firstNum / secondNum;
+//                 return alert(`The value of expression ${firstNum} / ${secondNum} equals ${sum}!`);
+//         };
+
+//         switch(operator) {
+//                 case '+': {
+//                         addition(firstNum, secondNum);
+//                         break;
+//                 }
+//                 case '-': {
+//                         subtraction(firstNum, secondNum);
+//                         break;
+//                 }
+//                 case '*': {
+//                         multiplication(firstNum, secondNum);
+//                         break;
+//                 }
+//                 case '/': {
+//                         division(firstNum, secondNum);
+//                         break;
+//                 }
+//                 default: {
+//                         alert(`You entered incorrect operator!`);
+//                 }
+//         }
+// }
+
+// calc();
+
