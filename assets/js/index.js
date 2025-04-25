@@ -3575,18 +3575,18 @@ P.S. Повна творча свбода
 // = 6
 
 
-function sumDigits(n) {
+// function sumDigits(n) {
 
-        const nToStr = n.toString();
+//         const nToStr = n.toString();
 
-        if (nToStr.length === 1) {
-                return Number(nToStr);
-        } else {
-                console.log(nToStr.slice(0, -1));
-                return Number(nToStr[nToStr.length - 1]) + Number(sumDigits(nToStr.slice(0, -1)))
-        }
-}
-console.log(sumDigits(555));
+//         if (nToStr.length === 1) {
+//                 return Number(nToStr);
+//         } else {
+//                 console.log(nToStr.slice(0, -1));
+//                 return Number(nToStr[nToStr.length - 1]) + Number(sumDigits(nToStr.slice(0, -1)))
+//         }
+// }
+// console.log(sumDigits(555));
 
 
 
@@ -3684,3 +3684,128 @@ console.log(sumDigits(555));
 
 // const list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } };
 // const isOdd = (num) => num % 2 !== 0;
+
+
+
+
+
+// ###############################################################################################################################################################################################
+
+
+                // Обробка помилок (Try, Catch, Throw) / Error handling (Try, Catch, Throw)
+
+
+// https://uk.javascript.info/try-catch
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+
+// UX - user experience
+
+// Коли виконується скрип (завантажилась сторінка і т.д.) якщо де небудь в скрипті виникне будь яка помилка то увесь скрипт припиняє виконуватись
+// Тобто з того місця де виникла помилка і донизу скрипт не буде виконуватись
+// Це є дуже небезпечно, тому таких ситуацій намагаються уникати за допомогою блоків try  та catch
+
+
+// try та catch використовується для обробки помилок самого JS, тих що передбачені десь там двіжком в середині
+
+// try {                   // блок в якому ми будемо пробувати виконати якийсь код, який потенційно може призвести до помилки
+//                         // якщо в будь якому рядочку коду виникне помилка, нас автоматично перекине в catch
+// }
+
+// catch(err) {            // блок в якому ми відхопимо помилку з блоку try якщо вона там і виникне і інструкції що робити далі
+//                         // тут ми можемо закинути помилку в лог, чи  в консоль. робити хоть що з нею, але решта коду нижче в скрипті буде виконуватись далі
+// }
+
+
+// try {
+//         const a = 10;
+//         console.log(a);
+//         const c = a + b;       // змінної b не існує тому буде помилка Reference error b is not defined яка потрапить в catch і весь інший код виконається
+// } 
+// catch(err) {
+//         console.log(err);     // виводимо в консоль обєкт помилки з блоку try
+//         // ReferenceError: b is not defined
+//         //at index.js:3716:23
+// }
+
+// console.log('Hello');
+// console.log('Hello');
+// console.log('Hello');
+// console.log('Hello');
+// console.log('Hello');
+
+// В консоль ми отримаємо результат 10 зі змінної а і всі Hello після нього. 
+// Тобто той шматок коду що викликає помилку потрапив в catch і не шкодить всьому іншому коду
+
+
+// В JS є вбудований тип даних Error що виконується через функцію конструктор, який автоматично використовуєтьсья движком  для try i catch
+
+// const problem = new Error('I am the description of error');
+// console.log(problem);
+//                 //Error: I am the description of error
+//                 // at index.js:3739:17
+
+
+
+// throw використовується для обробки помилок які ми самостіно визначаємо, наприклад маючи задачу обчислити суму чисел ми хочемо відлолвити помилку якщо як параметр передано стрінг а не число
+
+// throw new Error('message');  // index.js:3751 Uncaught Error: message
+// console.log('Hello1');       // це вже не виведеться
+
+
+//Написати функцію для обчислення факторіала. 
+// Передбачити щоб можна булол обчислювати факторіал тільки для number, тільки цілі додатні значення integer. Все інше важати помилкою
+
+// function factorial(n) {
+//         if (typeof n !== 'number') {
+//                 throw new Error('n must be number')  // Error- це загальний вид помилки, їх є ще багато типів які краще підбирати під задачу (RangeErroe, TypeError ...) - почитати на MDN про Error
+//                 // throw new TypeError('n must be number')  // Error- це загальний вид помилки, їх є ще багато типів які краще підбирати під задачу (RangeErroe, TypeError ...) - почитати на MDN про Error
+//         }
+//         if (n < 0 || !Number.isSafeInteger(n)) {
+//                 throw new RangeError('n must be positive and integer value')
+//         }
+//         if (n === 0) {
+//                 return 1;
+//         }
+//         return n * factorial(n-1);
+// }
+
+// console.log(factorial(10));    // 10
+// console.log(factorial(10.5));    // index.js:3764 Uncaught RangeError: n must be positive and integer value - бо число не ціле
+// // console.log(factorial('10'));   // index.js:3760 Uncaught Error: n must be number - бо це не число, але весь код нижче не буде виконаний
+
+// console.log('hello2');   // нічого не виведе в консоль бо помилка зупинить виконання коду
+//                          // але після того як ми загорнули в try catch виклик console.log(factorial('10')) - то цей рядок також відпрацює
+
+// // щоб помилка throw не викликала таких проблем, треба те місце де виникне помилка загорнути в try catch (в цьому випадку при виклику функції factorial)
+
+// try {
+//         // console.log(factorial('10'));    // тут ми перехопимо помилку і далі наш код виконається гарно
+//         console.log(factorial(-10.5));    // тут ми перехопимо помилку і далі наш код виконається гарно
+// } catch (err) {}
+
+// console.log('Hello after error');  // Hello after error
+
+
+// function greeting() {
+
+//         throw 'Hello world!';
+
+// }
+
+// function sayHello() {
+
+//         try {
+//                 const data = greeting();  // = 'Hello world' - ця функція одразу повертає помилку з вказаним текстом
+//                 console.log('It works!');  // цей рядок не виконається бо попередній рядок повертає помилку
+//         } catch (error) {
+//                 console.log('Oh no an error:', error);  // тут отримаємо спершу помилку 'Oh no an error:', а потім текст помилкии 'Hello world!' зазначений в throw
+
+//         }
+// }
+//                                 // у try при виклику функції greeting виникає помилка, нас перекидає в catch в який передається як аргумент текст помилки зазнач в throw у функції greeting
+// console.log(sayHello());  // Oh no an error: Hello world!
+// console.log('BBB');
+// console.log(greeting());
+
+
+
