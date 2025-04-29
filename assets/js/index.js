@@ -3812,3 +3812,98 @@ P.S. Повна творча свбода
 // Отже throw генерує помилку (виняткову ситуацію/exception) яка передається в catch():
 // throw new Error => catch (error)
 // а try виконує блок коду в якому є імовірність виникнення помилки (виняткової ситуації)
+
+
+
+// Завдання
+//  написати функцію для валідації імені користувача (4-32, string)
+// яко занчення валідне, то повернути його
+// якщо ні, то згенерувати помилку
+// validateName(name) => validatedName || throw error  
+
+// це другий спосіб  вирішити цю задачу, більш популярний, без використання помилок.
+// isValid(name) => true || false
+
+// function validateName (name) {
+//         if(typeof name !== 'string') {
+//                 throw new TypeError('Name must be string value')
+//         }
+
+//         if(name.length < 4 || name.length > 32) {
+//                 throw new RangeError('Name must be min 4 max 32 characters')
+//         }
+
+//         return name;
+// }
+
+// try {
+//         const validatedName = validateName('jdlnkknkb');
+// } catch (error) {
+//         console.log(error);
+// }
+
+
+
+// Задача
+// Реалізувати функцію, яка приймає вік
+// повертає вік якщо параметр відповідає вимогам
+// інакше генерує помилку
+
+// function validateAge (age) {
+//         if (typeof age !== 'number') {
+//                 throw new TypeError('Age must be number')
+//         }
+//         if (age < 18 || age > 65) {
+//                 throw new RangeError('You are out of range.')
+//         }
+//         return age;
+// }
+
+// try {
+//         const validatedAge = validateAge(15);
+//         console.log(validatedAge);
+// } catch (err) {
+//         console.log(err);
+// }
+
+// console.log('hello');
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//за допомогою instanceof ми можемо знаходити тип помилки і в залежності від цього по різному її обробляти
+
+// 
+// [] instanceof Array // true
+// [] instanceof Object  // true
+// [] instanceof Error  // false
+
+// function validateAge (age) {
+//         if (typeof age !== 'number') {
+//                 throw new TypeError('Age must be number')
+//         }
+//         if (age < 18 || age > 65) {
+//                 throw new RangeError('You are out of range.')
+//         }
+//         return age;
+// }
+
+// try {
+//         const validatedAge = validateAge(15);
+//         console.log(validatedAge);
+// } catch (err) {
+//         if (err instanceof RangeError) {                        // перевіряємо який тип помилки і в залежності від цього по ріному її обробляємо
+//                 console.log('RangeError handling');             // тоді виведеться цей текст помилки а не той що в throw
+//         } else if (err instanceof TypeError) {
+//                 console.log('TypeError handling');
+//         } else {
+//                 console.log('Error Handling');                  // перевіряємо на загальний тип Error, на випадок якщо помилка не потрапить в жоден підтип Error (RangeError, TypeError ...)
+//         }
+// }
+
+// // розміщуємо типи помилок починаючи з найбільш специфічних (TypeError, RangeError...) закінчуючи узагальненою (Error),
+// //  інакше якщо спершу перевірим на основний Error то будь яка помилка потраплятиме в загальний Error і ми не отримаємо ось це сортування по підтипам помилок
+
+// console.log('hello');
+
+
